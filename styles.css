@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e5e5e5;
+  display: flex;
+  padding-top: 5rem;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.col-header {
+  width: 150px;
+  box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  border-radius: 20px 20px 0 0;
+  padding: 0.8rem 1rem;
+  color: #fff;
+}
+
+.item {
+  width: 150px;
+  height: 66px;
+  border: 1px solid #eee;
+  box-shadow: 4px 4px 9px rgba(198, 198, 198, 0.36);
+  border-radius: 0;
+  background: #f7f6f7;
+  padding: 0.8rem 1rem;
+  color: #828282;
+  text-align: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+.placeholder {
+  width: 150px;
+  min-height: 66px;
+  background-color: #fff;
+}
+
+.start {
+  background: linear-gradient(90deg, #ff85e4 0%, #229efd 179.25%);
+}
+
+.progress {
+  background: linear-gradient(90deg, #209cff 0%, #68e0cf 100%);
+}
+
+.done {
+  background: linear-gradient(90deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.hold {
+  opacity: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.create-card {
+  cursor: pointer;
+  border-radius: 0 0 20px 20px;
+}
+
+.create-card-popup {
+  position: absolute;
+  background-color: #fff;
+  padding: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  color: rebeccapurple;
+}
+
+.create-card-popup input {
+  height: 20px;
+  border: 2px solid rebeccapurple;
+  border-radius: 3px;
+}
+
+.create-card-popup.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup__button {
+  background: lightskyblue;
+  border-radius: 5px;
+}
+
+.df {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.df input {
+  margin-left: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-info {
+  position: absolute;
+  padding: 20px;
+  background: #fff;
+  display: none;
+  border: 1px solid rebeccapurple;
+  border-radius: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+.card-info.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-info__item {
+  margin: 10px;
+}
+
+
+.card-info .card-info__close {
+  padding: 5px 20px;
+  background-color: #fff;
+  border: 1px solid rebeccapurple;
+  border-radius: 20px;
+}
+
+.card-info .card-info__remove {
+  padding: 5px 20px;
+  background-color: #fff;
+  border: 1px solid rebeccapurple;
+  border-radius: 20px;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Drag & Drop | Проект 2</title>
+  </head>
+  <body>
+    <div>
+      <div class="row">
+        <div class="col-wrapper">
+          <div class="col-header start">begin</div>
+          <div class="placeholder" index="0"></div>
+          <div class="col-header create-card start">+</div>
+        </div>
+        <div class="col-wrapper">
+          <div class="col-header progress">in work</div>
+          <div class="placeholder" index="1"></div>
+          <div class="col-header create-card progress">+</div>
+        </div>
+        <div class="col-wrapper">
+          <div class="col-header done">done</div>
+          <div class="placeholder" index="2"></div>
+          <div class="col-header create-card done">+</div>
+        </div>
+      </div>
+    </div>
+    <div class="create-card-popup">
+      <div class="create-card-popup__block">
+        <div class="df">
+          Name: <input class="popup__name" type="text">
+        </div>
+        <div class="df">
+          Surname: <input class="popup__surname" type="text">
+        </div>
+        <div class="df">
+          Age: <input class="popup__age" type="number">
+        </div>
+        <div class="df">
+          Budget: <input class="popup__budget" type="text">
+        </div>
+        <button class="popup__create popup__button">Create</button>
+        <button class="popup__close popup__button">Close</button>
+      </div>
+    </div>
+    <div class="card-info">
+      <div class="card-info__name card-info__item"></div>
+      <div class="card-info__age card-info__item"></div>
+      <div class="card-info__budget card-info__item"></div>
+      <button class="card-info__close card-info__item">Close</button>
+      <button class="card-info__remove card-info__item">Remove</button>
+    </div>
+    <script type="module"  src="script.js"></script>
+  </body>
+</html>
