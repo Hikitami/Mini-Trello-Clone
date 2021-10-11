@@ -179,17 +179,8 @@ function cardInfo () {
   let userSurname = popup.querySelector('.popup__surname');
   let userAge = popup.querySelector('.popup__age');
   let userBudget = popup.querySelector('.popup__budget');
-  if (userName.value.length == 0 || userName.value.search("^[A-Za-zА-Яа-яЁё\s]")) {
-    alert(`empty Name`);
-    return false;
-  } else if (userSurname.value.length == 0 || userSurname.value.search("^[A-Za-zА-Яа-яЁё\s]")) {
-    alert('empty Surname')
-    return false;
-  } else if (userAge.value.length == 0 || userAge.value.search("^[0-9]+$")) {
-    alert('empty Age')
-    return false;
-  } else if (userBudget.value.length == 0 || userBudget.value.search("^[0-9]+$")) {
-    alert('empty budget')
+  if (userName.value.search("^[A-Za-zА-Яа-яЁё\s]") || userSurname.value.search("^[A-Za-zА-Яа-яЁё\s]") || userAge.value.search("^[0-9]+$") || userBudget.value.search("^[0-9]+$")) {
+    alert(`empty field`);
     return false;
   } else {
     let userInfo = {
