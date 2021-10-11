@@ -115,19 +115,21 @@ function userCreateCard (user) {
 createCardButton.addEventListener('click', function() {
   let index = popup.getAttribute('index');
   let pop = cardInfo ();
-  let div = document.createElement('div');
-  let titleCard = `${pop.name} ${pop.surname} `;
+  if (pop != false) {
+    let div = document.createElement('div');
+    let titleCard = `${pop.name} ${pop.surname} `;
 
-  div.setAttribute('id', pop.id);
+    div.setAttribute('id', pop.id);
 
-  div.draggable = true;
-  div.classList.add('item');
-  div.textContent = titleCard;
-  div.addEventListener('dragstart', dragstart);
-  div.addEventListener('dragend', dragend);
-  div.addEventListener('click', showCardInfo);
-  placeholders[index].append(div);
-  popup.classList.remove('active');
+    div.draggable = true;
+    div.classList.add('item');
+    div.textContent = titleCard;
+    div.addEventListener('dragstart', dragstart);
+    div.addEventListener('dragend', dragend);
+    div.addEventListener('click', showCardInfo);
+    placeholders[index].append(div);
+    popup.classList.remove('active');
+  }
 })
 
 closeCardButton.addEventListener('click', function() {
@@ -177,20 +179,33 @@ function cardInfo () {
   let userSurname = popup.querySelector('.popup__surname');
   let userAge = popup.querySelector('.popup__age');
   let userBudget = popup.querySelector('.popup__budget');
+  if (userName.value.length == 0 || userName.value.search("^[A-Za-zА-Яа-яЁё\s]")) {
+    alert(`empty Name`);
+    return false;
+  } else if (userSurname.value.length == 0 || userSurname.value.search("^[A-Za-zА-Яа-яЁё\s]")) {
+    alert('empty Surname')
+    return false;
+  } else if (userAge.value.length == 0 || userAge.value.search("^[0-9]+$")) {
+    alert('empty Age')
+    return false;
+  } else if (userBudget.value.length == 0 || userBudget.value.search("^[0-9]+$")) {
+    alert('empty budget')
+    return false;
+  } else {
+    let userInfo = {
+      name: userName.value,
+      surname: userSurname.value,
+      age: userAge.value,
+      budget: userBudget.value,
+      column: cardColumn,
+      id: Math.floor(1 - 0.5 + Math.random() * (1000000 - 1 + 1)),
+    };
 
-  let userInfo = {
-    name: userName.value,
-    surname: userSurname.value,
-    age: userAge.value,
-    budget: userBudget.value,
-    column: cardColumn,
-    id: Math.floor(1 - 0.5 + Math.random() * (1000000 - 1 + 1)),
-  };
+    user.push(userInfo);
+    setFirebase(userId, userInfo);
 
-  user.push(userInfo);
-  setFirebase(userId, userInfo);
-
-  return userInfo;
+    return userInfo;
+  }
 }
 
 function showCardInfo (event) {
