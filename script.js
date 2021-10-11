@@ -8,16 +8,16 @@ function getCookie(name) {
 
 let userId = getCookie('userId');
 
-if (!userId) {
-  let popo =  1 - 0.5 + Math.random() * (1000000 - 1 + 1)
+if (!userId || userId == undefined || userId == 'undefined') {
+  let popo =  Math.floor(1 - 0.5 + Math.random() * (1000000 - 1 + 1))
 
-  popo = String(popo).replace('.', '');
-  document.cookie = `userId= ${popo};max-age: 7200;`;
+  document.cookie = `userId = ${popo};max-age=3600`;
+  userId = getCookie('userId');
 } else if (userId == undefined || userId == 'undefined' || userId == '') {
-  let popo =  1 - 0.5 + Math.random() * (1000000 - 1 + 1);
+  let popo =  Math.floor(1 - 0.5 + Math.random() * (1000000 - 1 + 1));
 
-  popo = String(popo).replace('.', '');
-  document.cookie = `userId= ${popo};max-age: 7200;`;
+  document.cookie = `userId = ${popo};max-age=3600`;
+  userId = getCookie('userId');
 }
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
@@ -52,7 +52,6 @@ let cardInfoBlock = document.querySelector('.card-info');
 function setFirebase(userId, obj) {
   set(ref(db, `user/${userId}/${obj.id}/`), obj) 
 }
-
 //функция получения данных из базы данных
 function getFirebase() {
   const dbref = ref(db);
@@ -71,7 +70,7 @@ function getFirebase() {
   })
 }
 
-getFirebase()
+getFirebase();
 
 function updateFirebase (id, columnNum) {
   let column = {
